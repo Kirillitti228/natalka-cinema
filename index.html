@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Natalka Cinema</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         СТРАНИЦА С ПОСТЕРАМИ
+         ========================= -->
+
+    <main class="cinema-page">
+
+        <header class="cinema-header">
+
+            <h1>NATALKA CINEMA</h1>
+
+            <p>THE COLLECTION</p>
+
+        </header>
+
+
+        <section class="poster-grid">
+
+
+            <!-- ПОСТЕР 1 -->
+
+            <article
+                class="poster-card"
+                data-video="videos/video-01.mp4"
+            >
+
+                <img
+                    src="posters/poster-01.jpg"
+                    alt="Natalka video 1"
+                >
+
+                <div class="poster-shine"></div>
+
+            </article>
+
+
+
+            <!-- ПОСТЕР 2 -->
+
+            <article
+                class="poster-card"
+                data-video="videos/video-02.mp4"
+            >
+
+                <img
+                    src="posters/poster-02.jpg"
+                    alt="Natalka video 2"
+                >
+
+                <div class="poster-shine"></div>
+
+            </article>
+
+
+
+            <!-- ПОСТЕР 3 -->
+
+            <article
+                class="poster-card"
+                data-video="videos/video-03.mp4"
+            >
+
+                <img
+                    src="posters/poster-03.jpg"
+                    alt="Natalka video 3"
+                >
+
+                <div class="poster-shine"></div>
+
+            </article>
+
+
+
+            <!-- ПОСТЕР 4 -->
+
+            <article
+                class="poster-card"
+                data-video="videos/video-04.mp4"
+            >
+
+                <img
+                    src="posters/poster-04.jpg"
+                    alt="Natalka video 4"
+                >
+
+                <div class="poster-shine"></div>
+
+            </article>
+
+
+
+            <!-- ПОСТЕР 5 -->
+
+            <article
+                class="poster-card"
+                data-video="videos/video-05.mp4"
+            >
+
+                <img
+                    src="posters/poster-05.jpg"
+                    alt="Natalka video 5"
+                >
+
+                <div class="poster-shine"></div>
+
+            </article>
+
+
+
+            <!-- ПОСТЕР 6 -->
+
+            <article
+                class="poster-card"
+                data-video="videos/video-06.mp4"
+            >
+
+                <img
+                    src="posters/poster-06.jpg"
+                    alt="Natalka video 6"
+                >
+
+                <div class="poster-shine"></div>
+
+            </article>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         ОКНО ПРОСМОТРА ВИДЕО
+         ========================= -->
+
+    <div
+        class="video-viewer"
+        id="videoViewer"
+    >
+
+
+        <!-- КНОПКА НАЗАД -->
+
+        <button
+            class="back-button"
+            id="backButton"
+        >
+
+            ← Назад
+
+        </button>
+
+
+
+        <!-- ВИДЕО -->
+
+        <div class="video-container">
+
+            <video
+                id="mainVideo"
+                controls
+                playsinline
+            ></video>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(80, 55, 25, 0.16), transparent 35%),
+        #080706;
+    color: #f4eee4;
+    overflow-x: hidden;
+}
+
+/* =========================
+   ОСНОВНАЯ СТРАНИЦА
+   ========================= */
+
+.cinema-page {
+    min-height: 100vh;
+    padding: 45px 5vw 80px;
+}
+
+.cinema-header {
+    text-align: center;
+    margin-bottom: 55px;
+    position: relative;
+}
+
+.cinema-header h1 {
+    font-size: clamp(42px, 6vw, 86px);
+    font-weight: 400;
+    letter-spacing: 12px;
+    line-height: 1;
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.08),
+        0 0 35px rgba(180, 145, 90, 0.12);
+}
+
+.cinema-header p {
+    margin-top: 18px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 8px;
+    opacity: 0.55;
+}
+
+/* Декоративная линия */
+.cinema-header::after {
+    content: "";
+    display: block;
+    width: min(500px, 70%);
+    height: 1px;
+    margin: 30px auto 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(220, 190, 140, 0.55),
+        transparent
+    );
+}
+
+/* =========================
+   ПОСТЕРЫ
+   ========================= */
+
+.poster-grid {
+    width: min(1250px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 38px 30px;
+}
+
+.poster-card {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    cursor: pointer;
+    background: #14110e;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.55),
+        0 0 0 rgba(220, 190, 140, 0);
+    transition:
+        transform 0.45s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.45s ease,
+        border-color 0.45s ease;
+}
+
+.poster-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.08),
+            transparent 25%,
+            transparent 75%,
+            rgba(0,0,0,0.25)
+        );
+}
+
+.poster-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(.2,.8,.2,1);
+}
+
+.poster-shine {
+    position: absolute;
+    z-index: 3;
+    inset: -100% 0 auto -100%;
+    width: 60%;
+    height: 300%;
+    transform: rotate(25deg);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.16),
+        transparent
+    );
+    transition: left 0.8s ease;
+    pointer-events: none;
+}
+
+.poster-card:hover {
+    transform: translateY(-12px) scale(1.025);
+    border-color: rgba(220, 190, 140, 0.5);
+    box-shadow:
+        0 25px 55px rgba(0, 0, 0, 0.7),
+        0 0 35px rgba(190, 150, 90, 0.1);
+}
+
+.poster-card:hover img {
+    transform: scale(1.07);
+}
+
+.poster-card:hover .poster-shine {
+    left: 150%;
+}
+
+/* =========================
+   ПРОСМОТР ВИДЕО
+   ========================= */
+
+.video-viewer {
+    position: fixed;
+    z-index: 100;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 70px 30px 35px;
+    background: rgba(3, 3, 3, 0.97);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.video-viewer.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.video-container {
+    width: min(94vw, 1500px);
+    height: calc(100vh - 105px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-container video {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.8),
+        0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Кнопка назад */
+.back-button {
+    position: fixed;
+    z-index: 110;
+    top: 22px;
+    left: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(15, 13, 11, 0.75);
+    color: #f4eee4;
+    padding: 11px 19px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.back-button:hover {
+    background: rgba(70, 55, 35, 0.8);
+    border-color: rgba(220, 190, 140, 0.6);
+    transform: translateX(3px);
+}
+
+/* =========================
+   АДАПТИВ
+   ========================= */
+
+@media (max-width: 900px) {
+    .poster-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px 20px;
+    }
+
+    .cinema-page {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+
+@media (max-width: 600px) {
+    .poster-grid {
+        grid-template-columns: 1fr;
+        width: min(360px, 100%);
+    }
+
+    .cinema-header h1 {
+        letter-spacing: 6px;
+    }
+
+    .cinema-header p {
+        letter-spacing: 4px;
+    }
+
+    .video-viewer {
+        padding: 65px 10px 20px;
+    }
+
+    .video-container {
+        width: 100%;
+        height: calc(100vh - 90px);
+    }
+
+    .back-button {
+        top: 15px;
+        left: 15px;
+    }
+}
